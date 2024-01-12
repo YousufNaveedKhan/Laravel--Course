@@ -15,8 +15,11 @@ class QuranApp extends Controller
         return view("Quran", ["myqurandata" => $QuranData["data"]["surahs"]["references"]]);
     }
     function ReadSurah($SurahNumber) {
-        $AayahDetail = Http::get("http://api.alquran.cloud/v1/surah/{$SurahNumber}/ar.alafasy");
-
-        return view("ReadSurah", ["AayahDetail" => $AayahDetail["data"]]);
+        $SurahDetails = Http::get("http://api.alquran.cloud/v1/surah/{$SurahNumber}/ar.alafasy");
+        $EngTranslation = Http::get("http://api.alquran.cloud/v1/surah/{$SurahNumber}/en.asad");
+        return view("ReadSurah",
+        ["SurahDetails" => $SurahDetails["data"]],
+        ["EngTranslation" => $EngTranslation]
+        );
     }
 }

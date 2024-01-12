@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $AayahDetail['name'] }} | QuranApp</title>
+    <title>{{ $SurahDetails['name'] }} | QuranApp</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,14 +47,15 @@
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th scope="col" style="text-align: right">{{$AayahDetail['name']}}</th>
+                    <th scope="col" style="text-align: right">{{$SurahDetails['name']}}</th>
                     <th scope="col">Audio</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($AayahDetail["ayahs"] as $Ayah)
+                @foreach ($SurahDetails["ayahs"] as $index => $Ayah)
                 <tr>
-                    <td style="text-align: right">{{ $Ayah['text'] }}</td>
+                    <td style="text-align: right">{{ $Ayah['text'] }}
+                    <p style="font-size: 18px; margin-top: 4px">{{ $EngTranslation["data"]["ayahs"][$index]["text"] }}</p></td>
                     <td><audio controls>
                         <source src="{{ $Ayah["audio"] }}">
                     </audio></td>
