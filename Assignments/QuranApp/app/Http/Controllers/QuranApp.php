@@ -17,8 +17,6 @@ class QuranApp extends Controller
     function ReadSurah($SurahNumber) {
         $AayahDetail = Http::get("http://api.alquran.cloud/v1/surah/{$SurahNumber}/ar.alafasy");
 
-        return view("ReadSurah", [
-            "AayahDetail" => $AayahDetail["data"]
-        ]);
+        return view("ReadSurah", ["AayahDetail" => $AayahDetail["data"]]);
     }
 }
