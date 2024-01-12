@@ -21,7 +21,6 @@
         }
         table{
             font-family: 'Amiri Quran', serif;
-            text-align: center;
         }
         th {
             font-size: 35px;
@@ -48,15 +47,20 @@
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th scope="col">{{$SurahDetails['name']}}</th>
+                    <th scope="col" style="text-align: right">{{$SurahDetails['name']}}</th>
+                    <th scope="col">Audio</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($SurahDetails['ayahs'] as $Ayah)
-                    <tr>
-                        <td>{{ $Ayah['text'] }}</td>
-                    </tr>
-                @endforeach
+                @foreach ($AayahDetail as $Ayah)
+                <tr>
+                    <td style="text-align: right">{{ $Ayah['text'] }}</td>
+                    <td><audio controls>
+                        <source src="{{ $Ayah["audio"] }}">
+                    </audio></td>
+                </tr>
+            @endforeach
+
 
 
 
